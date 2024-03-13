@@ -1,8 +1,31 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:localstorage/localstorage.dart';
 
 class MyHomePageController{
   final LocalStorage storage = new LocalStorage('my_app');
-    List<Map<String,dynamic>> items=[
+  late final mystorage;
+  final formKey = GlobalKey<FormBuilderState>();
+
+  MyHomePageController(){
+    initializeStorage();
+  }
+
+  initializeStorage()async{
+    await storage.ready;
+    mystorage = storage.getItem('myitems') ?? [];
+  }
+
+  addItems(key,value)async{
+    var data =await storage.getItem(key);
+    var items =json.decode(data);
+    items.add(value);
+    var encodeddata = json.encode(items);
+    storage.setItem(key, encodeddata);
+  }
+  List<Map<String,dynamic>> items=[
       {
         'name': 'Smartphone',
         'brand': 'Samsung',
