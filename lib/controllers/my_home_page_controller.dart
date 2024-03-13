@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:localstorage/localstorage.dart';
 
 class MyHomePageController{
+  Map<String,dynamic> formInfo = <String,dynamic>{};
   final LocalStorage storage = new LocalStorage('my_app');
   late final mystorage;
   final formKey = GlobalKey<FormBuilderState>();
