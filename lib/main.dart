@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
-import 'package:play_ground/page/my_home_page.dart';
+import 'package:play_ground/controllers/mydata.dart';
+
+import 'page/recommended_products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(MyHomePageController());
-    return MaterialApp(
+    Get.put(myDataController());
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  MyHomePage(),
+      home:  Products(),
     );
   }
 }

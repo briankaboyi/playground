@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/widget/form_field_widget.dart';
 
 class MyHomePage extends GetView<MyHomePageController>{
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,11 +21,12 @@ class MyHomePage extends GetView<MyHomePageController>{
             FormbuilderTextField(name: "data"),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: InkWell(
+              child: GestureDetector(
                 onTap: (){
+                  // Get.bottomSheet(Container(child: Text("data"),));
                   if(controller.formKey.currentState!.validate()){
-                    controller.formInfo = controller.formKey.currentState!.value;
-                    Get.bottomSheet(Container(child: Text("data"),));
+                    print("<<<<<<<<<<<<<<<${controller.formKey.currentState!.value}");
+                    // controller.formInfo = controller.formKey.currentState!.value;
                   }
                   
                 },

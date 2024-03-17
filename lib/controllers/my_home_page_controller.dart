@@ -6,7 +6,7 @@ import 'package:localstorage/localstorage.dart';
 
 class MyHomePageController{
   Map<String,dynamic> formInfo = <String,dynamic>{};
-  final LocalStorage storage = new LocalStorage('my_app');
+  final LocalStorage storage = LocalStorage('my_app');
   late final mystorage;
   final formKey = GlobalKey<FormBuilderState>();
 
