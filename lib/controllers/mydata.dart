@@ -1,10 +1,11 @@
-
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:play_ground/page/product_info_page.dart';
 import 'package:play_ground/widget/product_widget.dart';
 import 'package:play_ground/widget/text_widget.dart';
 
-class  myDataController{
-  Map<String,dynamic> companies = {
+class myDataController {
+  Map<String, dynamic> companies = {
     "recommended": {
       "Tech": [
         {
@@ -90,58 +91,59 @@ class  myDataController{
         }
       ]
     }
-  }
+  };
 
-  ;
-
-  List<Widget> getRecommendedProducts(Map<String,dynamic> productsMap){
-    var products = companies[ "recommended"];
+  List<Widget> getRecommendedProducts(Map<String, dynamic> productsMap) {
+    var products = companies["recommended"];
     List<Widget> r = [];
 
     r.addAll(getProductsByCategory(products));
     return r;
   }
-  getProductsByCategory(Map<String,dynamic> e){
+
+  getProductsByCategory(Map<String, dynamic> e) {
     List<Widget> r = [];
     e.forEach((key, value) {
       print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>$key");
       print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>$value");
-      r.add(
+      r.add(Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
-            padding: const EdgeInsets.only(bottom:20.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.only(left: 15, bottom: 10.0),
+            child: text_widget(
+              text: key,
+              color: 0xff000000,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              textAlign: TextAlign.center,
+              lineHeight: 1.5,
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15.0, bottom: 15),
+              child: Row(
+                children: value.map<Widget>((e) {
+                  print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>$e");
+                  return GestureDetector(
+                      onTap: () {
+                        var r = e;
+                        Get.to(()=>ProductInfoPage(),arguments: r);
 
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.only(left:15,bottom: 10.0),
-                    child: text_widget(
-                      text: key,
-                      color: 0xff000000,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      textAlign: TextAlign.center,
-                      lineHeight: 1.5,
-                    ),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0,bottom: 15),
-                      child: Row(
-                        children: value.map<Widget>((e){
-                          print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>$e");
-                          return ProductWidget(title: e["title"]?? '', yields: e["yields"]?? '', img: e["img"] ?? '',abr: e["subtitle"] ?? '');
-                        }).toList(),
-                      ),
-                    ),
-                  )
-                ]),
+                      },
+                      child: ProductWidget(
+                          title: e["title"] ?? '',
+                          yields: e["yields"] ?? '',
+                          img: e["img"] ?? '',
+                          abr: e["subtitle"] ?? ''));
+                }).toList(),
+              ),
+            ),
           )
-      );
-
-
-
+        ]),
+      ));
     });
     return r;
   }
