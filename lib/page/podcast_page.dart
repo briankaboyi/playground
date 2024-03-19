@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:play_ground/widget/avatar_widget.dart';
 import 'package:play_ground/widget/text_widget.dart';
 
 class PodcastPage extends GetView{
@@ -43,7 +44,20 @@ class PodcastPage extends GetView{
                        textAlign: TextAlign.center),
                  ),
                ),
+             ),
+             Row(
+               children: [
+                 {'name': 'Netflix','subtitle': 'Entertainment','img': './assets/netflix.png'},
+                 {'name': 'Disney','subtitle': 'Entertainment','img': './assets/disney.png'},
+               ].map((e){
+                 return AvatarWidget(
+                   name: e['name']??'',
+                   subtitle: e['subtitle']??'',
+                   img: e['img']??'',
+                 );;
+               }).toList(),
              )
+
            ],
          ),
        )),
