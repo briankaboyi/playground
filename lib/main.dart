@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/controllers/mydata.dart';
+import 'package:play_ground/page/podcast_page.dart';
 
 import 'page/animation.dart';
 import 'page/recommended_products.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  AnimationPage(),
+      home:  PodcastPage(),
     );
   }
 }

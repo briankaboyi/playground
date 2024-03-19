@@ -41,9 +41,12 @@ class AnimationPage extends GetView {
                 Container(
                   decoration:BoxDecoration(
                     borderRadius: BorderRadius.circular(1000),
-                    color: Color(0x99ffffff),
+                    color: Color(0xffffffff),
                   ),
-                    child: Image.asset('./assets/disney.png',fit: BoxFit.contain,height: 200,).fadeIn()),
+                    child: Padding(
+                      padding: const EdgeInsets.all(28.0),
+                      child: Image.asset('./assets/disney.png',fit: BoxFit.contain,height: 150,).fadeIn(duration: Duration(seconds:2)).bounce(begin: 0, end: .3).blur(begin: 0,end: 10,duration:Duration(seconds: 38) ),
+                    )),
                 RichText(text: TextSpan(style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold), children: <TextSpan>[
@@ -70,27 +73,25 @@ class AnimationPage extends GetView {
             ),
           ),
         ),
-        // Positioned(
-        //   bottom: 20,
-        //
-        //   right: 0,
-        //   left: 0,
-        //   child: button_widgets(
-        //       widget: const text_widget(
-        //         text: "Skip",
-        //         color: 0xff696969,
-        //         fontSize: 18,
-        //         fontWeight: FontWeight.w500,
-        //         textAlign: TextAlign.center,
-        //         lineHeight: 1.5,
-        //       ),
-        //       height: 47,
-        //       width: 90,
-        //       radius: 5,
-        //       color: 0xfffafafa,
-        //       borderColor: 0xfffafafa)
-        //       // .slide(offset: offset) ,
-        // ),
+        Positioned(
+          bottom: 20,
+          left: 0,
+          right: 0,
+          child: Container(
+            decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: text_widget(
+                text: "Skip",
+                color: 0xff000000,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                textAlign: TextAlign.center,
+                lineHeight: 1.5,
+              ),
+            ),
+          ),
+        ),
 
 
       ],
