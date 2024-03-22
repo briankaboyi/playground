@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:play_ground/widget/avatar_widget.dart';
 import 'package:play_ground/widget/text_widget.dart';
 
@@ -11,7 +13,7 @@ class PodcastPage extends GetView{
    return Scaffold(
      appBar: AppBar(
        bottom: PreferredSize(preferredSize: Size(Get.width, 200), child: Container(
-         decoration: BoxDecoration(color:Colors.black26,
+         decoration: BoxDecoration(color:Colors.white70,
              borderRadius: BorderRadius.circular(15)),
          child: Column(
            children: [
@@ -54,8 +56,12 @@ class PodcastPage extends GetView{
                    name: e['name']??'',
                    subtitle: e['subtitle']??'',
                    img: e['img']??'',
-                 );;
+                 ).animate().fade(duration: 2000.ms);;
                }).toList(),
+             ),
+             Container(
+               color: Colors.black26,
+               child:Lottie.asset("./assets/lottiewave.json",width:60 ,),
              )
 
            ],

@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^5.0.0-release-candidate-5
   localstorage: ^4.0.1+4
+  lottie: ^3.1.0
 
 
   flutter_form_builder:
