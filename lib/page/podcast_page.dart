@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:play_ground/widget/avatar_widget.dart';
+import 'package:play_ground/widget/file_picker.dart';
 import 'package:play_ground/widget/text_widget.dart';
 
 class PodcastPage extends GetView{
@@ -62,12 +63,15 @@ class PodcastPage extends GetView{
              Container(
                color: Colors.black26,
                child:Lottie.asset("./assets/lottiewave.json",width:60 ,),
-             )
+             ),
+
+
 
            ],
          ),
        )),
      ),
+     body: FilePickerWidget(),
 
    );
   }
