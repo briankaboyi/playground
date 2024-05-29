@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239865016808",
+    "project_id": "playground-fbbc7",
+    "storage_bucket": "playground-fbbc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239865016808:android:3edb6bd45772b531ef745d",
+        "android_client_info": {
+          "package_name": "com.example.play_ground"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0TznOSjvMQ6lVxhPzTggUNkI4gTmdd34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
