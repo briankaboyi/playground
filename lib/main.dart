@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/controllers/mydata.dart';
 import 'package:play_ground/page/counter_page.dart';
+import 'package:play_ground/page/overlay.dart';
 import 'package:play_ground/page/podcast_page.dart';
 
 import 'page/animation.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home:  PodcastPage(),
-      home:  Counter(),
+      // home:  Counter(),
+      home:  OverlayPage(),
     );
   }
 }

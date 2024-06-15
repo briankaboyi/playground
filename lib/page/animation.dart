@@ -45,7 +45,7 @@ class AnimationPage extends GetView {
                   ),
                     child: Padding(
                       padding: const EdgeInsets.all(28.0),
-                      child: Image.asset('./assets/disney.png',fit: BoxFit.contain,height: 150,).fadeIn(duration: Duration(seconds:2)).bounce(begin: 0, end: .3).blur(begin: 0,end: 10,duration:Duration(seconds: 38) ),
+                      child: Image.asset('./assets/disney.png',fit: BoxFit.contain,height: 150,),
                     )),
                 RichText(text: TextSpan(style: TextStyle(
                     color: Colors.white,
