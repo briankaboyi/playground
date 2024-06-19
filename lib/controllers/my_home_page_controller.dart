@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:localstorage/localstorage.dart';
 
 class MyHomePageController{
@@ -12,8 +13,15 @@ class MyHomePageController{
 
   MyHomePageController(){
     initializeStorage();
+    checkConnectionStatus();
   }
+  checkConnectionStatus() async{
+    bool result = await InternetConnection().hasInternetAccess;
+    print("checkConnectionStatus>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>--$result");
 
+    return result;
+
+}
   initializeStorage()async{
     await storage.ready;
     mystorage = storage.getItem('myitems') ?? [];
