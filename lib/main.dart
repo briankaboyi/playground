@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/controllers/mydata.dart';
 import 'package:play_ground/page/counter_page.dart';
+import 'package:play_ground/page/first.dart';
+import 'package:play_ground/page/life_cycle_page.dart';
 import 'package:play_ground/page/overlay.dart';
 import 'package:play_ground/page/podcast_page.dart';
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       // home:  PodcastPage(),
       // home:  Counter(),
-      home:  OverlayPage(),
+      home:  First(),
     );
   }
 }

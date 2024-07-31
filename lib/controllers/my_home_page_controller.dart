@@ -18,7 +18,7 @@ class MyHomePageController {
   MyHomePageController() {
     initializeStorage();
     checkConnectionStatus();
-    constantConnectionStatus("false");
+    // constantConnectionStatus("false");
   }
   checkConnectionStatus() async {
     bool result = await InternetConnection().hasInternetAccess;
@@ -30,44 +30,44 @@ class MyHomePageController {
           },
           title: 'Connection error',
           description: "Check your internet connection and try again"));
-      constantConnectionStatus("false");
+      // constantConnectionStatus("false");
     }
 
     return result;
   }
-  constantConnectionStatus(cancel){
-    if (Get.isDialogOpen!=null && Get.isDialogOpen == true) {
-      constantConnectionStatus(true);
-    }
-    final listener = InternetConnection().onStatusChange.listen((InternetStatus status) {
-      switch (status) {
-        case InternetStatus.connected:
-        print('connected >>>>>>>>>>>>><<<<<<<<<<<<<<<< connected');
-        Get.dialog(CustomDialog(
-            actionMap: {
-              'Ok': () => print('ok'
-              )
-            },
-            title: 'Connection Success',
-            description: "internet connection available"));
-          break;
-        case InternetStatus.disconnected:
-          print('connected >>>>>>>>>>>>><<<<<<<<<<<<<<<NOT< connected');
-
-          Get.dialog(CustomDialog(
-              actionMap: {
-                'Ok': () =>print('ok'
-                )
-              },
-              title: 'Connection error from checker',
-              description: "Check your internet connection and try again"));
-          break;
-      }
-    });
-    if(cancel==true){
-      listener.cancel();
-    }
-  }
+  // constantConnectionStatus(cancel){
+  //   if (Get.isDialogOpen!=null && Get.isDialogOpen == true) {
+  //     constantConnectionStatus(true);
+  //   }
+  //   final listener = InternetConnection().onStatusChange.listen((InternetStatus status) {
+  //     switch (status) {
+  //       case InternetStatus.connected:
+  //       print('connected >>>>>>>>>>>>><<<<<<<<<<<<<<<< connected');
+  //       Get.dialog(CustomDialog(
+  //           actionMap: {
+  //             'Ok': () => print('ok'
+  //             )
+  //           },
+  //           title: 'Connection Success',
+  //           description: "internet connection available"));
+  //         break;
+  //       case InternetStatus.disconnected:
+  //         print('connected >>>>>>>>>>>>><<<<<<<<<<<<<<<NOT< connected');
+  //
+  //         Get.dialog(CustomDialog(
+  //             actionMap: {
+  //               'Ok': () =>print('ok'
+  //               )
+  //             },
+  //             title: 'Connection error from checker',
+  //             description: "Check your internet connection and try again"));
+  //         break;
+  //     }
+  //   });
+  //   if(cancel==true){
+  //     listener.cancel();
+  //   }
+  // }
 
   initializeStorage() async {
     await storage.ready;
