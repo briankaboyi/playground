@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/page/second.dart';
 
-class First extends GetView {
+class First extends GetView<MyHomePageController> {
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      body: ListView(
-        children: [
+      body: ListView(children: [
+        ...[
           'assets/apple.png',
           'assets/bitcoin.png',
           'assets/disney.png',
@@ -30,7 +35,21 @@ class First extends GetView {
             ),
           );
         }).toList(),
-      ),
+        FormBuilder(
+key: controller.formKey,
+            child: Column(children: [
+          controller.responseWidget( 'phoneNumber',),
+          ElevatedButton(
+              onPressed: () {
+                if (controller.formKey.currentState!.saveAndValidate()){
+                  print(controller.formKey.currentState!.value);
+                  return;
+                }
+
+              },
+              child: Text('press'))
+        ])),
+      ]),
     );
   }
 }

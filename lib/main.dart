@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:play_ground/controllers/my_home_page_controller.dart';
 import 'package:play_ground/controllers/mydata.dart';
+import 'package:play_ground/language_keys.dart';
 import 'package:play_ground/page/counter_page.dart';
 import 'package:play_ground/page/first.dart';
 import 'package:play_ground/page/life_cycle_page.dart';
+import 'package:play_ground/page/localization_howe.dart';
 import 'package:play_ground/page/overlay.dart';
 import 'package:play_ground/page/podcast_page.dart';
 
@@ -26,6 +28,9 @@ class MyApp extends StatelessWidget {
     Get.put(CounterController());
 
     return GetMaterialApp(
+      locale: Locale('en','US'),
+      translations:LanguageKeys(),
+      fallbackLocale: Locale('en','US'),
       title: 'Flutter Demo',
       theme: ThemeData(
 
@@ -34,10 +39,10 @@ class MyApp extends StatelessWidget {
       ),
       // home:  PodcastPage(),
       // home:  Counter(),
-      home:  First(),
+      home:  LocalizationHowe(),
     );
   }
 }
-//TODO : SHIMMER, BLUR/GLASSMORPHISM , ACCESS LOCAL FILES, UPLOADS, EXPLICiT ANIMATIONS, STATEFUL WIDGET LIFECYCLE,SCREEN UTIL
+//TODO : SHIMMER, BLUR/GLASSMORPHISM , ACCESS LOCAL FILES, UPLOADS, EXPLICiT ANIMATIONS, STATEFUL WIDGET LIFECYCLE,SCREEN UTIL,locallization.
 
 

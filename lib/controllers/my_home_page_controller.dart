@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:play_ground/widget/customDialog.dart';
 
@@ -14,6 +15,8 @@ class MyHomePageController {
   final LocalStorage storage = LocalStorage('my_app');
   late final mystorage;
   final formKey = GlobalKey<FormBuilderState>();
+
+
 
   MyHomePageController() {
     initializeStorage();
@@ -34,6 +37,41 @@ class MyHomePageController {
     }
 
     return result;
+  }
+  Widget responseWidget(attribute){
+    return   FormBuilderField(
+      name: attribute,
+      builder: (FormFieldState<dynamic> field) {
+        return IntlPhoneField(
+          decoration: const InputDecoration(
+            labelText: 'Phone Number',
+            border: OutlineInputBorder(
+              borderSide: BorderSide(),
+            ),
+          ),
+          initialCountryCode: 'KE',
+          onChanged: (phone) {
+            if(phone.isValidNumber()){
+              if(phone.countryCode == '+254'){
+                field.didChange('${phone.countryCode}${phone.number.substring(1)}');
+              }
+              field.didChange(phone.completeNumber);
+            }
+          },
+          validator: (value) {
+            if (value == null || value.completeNumber.isEmpty) {
+              return 'Phone number is required';
+            }
+            if (!value.isValidNumber()) {
+              return 'Invalid phone number for the selected country';
+            }
+            return null;
+          },
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+        );
+      },
+    );
+
   }
   // constantConnectionStatus(cancel){
   //   if (Get.isDialogOpen!=null && Get.isDialogOpen == true) {
